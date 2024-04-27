@@ -50,7 +50,7 @@
                                         %span.icon
                                             %i.fas.fa-film.fa-sm
                                         %span= reel.header
-                        %video.my-0(controls)
+                        %video.my-0(controls preload="auto")
                             %source{src:reel.mp4, type:"video/mp4"}/
                         - if defined?(reel.body)
                             %article.message.mt-0
