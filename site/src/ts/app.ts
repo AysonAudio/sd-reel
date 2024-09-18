@@ -4,22 +4,31 @@
 
 /** Cache of elems manipulated by app */
 type ElemCache = {
+    /** parts/_tab.haml */
     tabBtns: NodeListOf<HTMLAnchorElement>;
 
+    /** blocks/_nav.haml */
     portfolioPageBtns: NodeListOf<HTMLAnchorElement>;
+    /** blocks/_nav.haml */
     projectPageBtns: NodeListOf<HTMLAnchorElement>;
 
+    /** blocks/_reel-gallery.haml */
     reelBtns: NodeListOf<HTMLAnchorElement>;
 
+    /** index.html.haml */
     sections: {
         portfolios: HTMLElement;
         projects: HTMLElement;
     };
 
+    /** index.html.haml */
     portfolioPages: NodeListOf<HTMLElement>;
+    /** index.html.haml */
     projectPages: NodeListOf<HTMLElement>;
 
+    /** index.html.haml */
     reelVidBoxes: NodeListOf<HTMLDivElement>;
+    /** index.html.haml */
     reelVids: NodeListOf<HTMLVideoElement>;
 };
 
@@ -30,45 +39,21 @@ type ElemCache = {
  */
 export const GetElemCache: () => ElemCache = (() => {
     let cache: ElemCache = {
-        /**
-         * Tab buttons -> hide / unhide : sections
-         * Created in parts/_tab.haml | Used in index.html.haml
-         */
         tabBtns: document.querySelectorAll("#tabs > .tabs > ul > li > a"),
 
-        /**
-         * Pagination buttons -> hide / unhide : containers in sections
-         * Created in blocks/_nav.haml | Used in index.html.haml
-         */
         portfolioPageBtns: document.querySelectorAll("[id^='btn-portfolio-']"),
         projectPageBtns: document.querySelectorAll("[id^='btn-project-']"),
 
-        /**
-         * Reel gallery menu buttons -> hide / unhide : reel videos
-         * Created in blocks/_reel-gallery.haml | Used in index.html.haml
-         */
         reelBtns: document.querySelectorAll("[id^='reel-btn-']"),
 
-        /**
-         * Sections <- hidden / unhidden : click tab buttons
-         * Created in index.html.haml
-         */
         sections: {
             portfolios: document.querySelector("#portfolios"),
             projects: document.querySelector("#projects"),
         },
 
-        /**
-         * Containers in sections <- hidden / unhidden : click page buttons
-         * Created in index.html.haml
-         */
         portfolioPages: document.querySelectorAll("[id^='portfolio-']"),
         projectPages: document.querySelectorAll("[id^='project-']"),
 
-        /**
-         * Reel videos in pages <- hidden / unhidden : click reel buttons
-         * Created in blocks/_reel-gallery.haml | Used in index.html.haml
-         */
         reelVidBoxes: document.querySelectorAll("[id^='reel-vid-box-']"),
         reelVids: document.querySelectorAll("[id^='reel-vid-box-'] > video"),
     };
@@ -186,16 +171,15 @@ function initReelBtn(reelBtn: HTMLAnchorElement) {
 document.addEventListener("DOMContentLoaded", () => {
     let cache = GetElemCache();
 
-    // Tab buttons -> hide / unhide : sections
+    // Init buttons
     for (const tabBtn of cache.tabBtns) initTabBtn(tabBtn);
 
-    // Pagination buttons -> hide / unhide : containers in sections
     for (const pageBtn of cache.portfolioPageBtns) initPageBtn(pageBtn);
     for (const pageBtn of cache.projectPageBtns) initPageBtn(pageBtn);
-    // Default to first page
+
+    for (const reelBtn of cache.reelBtns) initReelBtn(reelBtn);
+
+    // In each tab section, default to first page
     cache.portfolioPageBtns[0]?.click();
     cache.projectPageBtns[0]?.click();
-
-    // Reel gallery menu buttons -> hide / unhide : reel videos
-    for (const reelBtn of cache.reelBtns) initReelBtn(reelBtn);
 });
