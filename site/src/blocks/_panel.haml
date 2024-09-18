@@ -76,4 +76,8 @@
         %footer.card-footer
             - if defined?(links)
                 - for link in links
-                    %a.card-footer-item.is-unselectable{href:link.href}= link.label
+                    %a.card-footer-item.is-unselectable{
+                        href:link.href,
+                        target:"_blank",
+                        rel:"noreferrer noopener"
+                    }= link.label
