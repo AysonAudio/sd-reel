@@ -68,10 +68,7 @@
                     - if defined?(title)
                         %p.title.is-3= title
                     - if defined?(subtitle)
-                        %p.subtitle.is-6{style:"
-                            white-space: pre-line;
-                            font-variant: small-caps
-                        "}= subtitle
+                        %p.subtitle.is-6.keep-line-breaks.is-smallcaps= subtitle
     - if defined?(links)
         %footer.card-footer
             - if defined?(links)
