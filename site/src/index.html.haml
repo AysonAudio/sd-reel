@@ -17,7 +17,7 @@ tabs:
 
 #############################################
 # Array of components:
-#   blocks/_panel.haml
+#   blocks/_board.haml
 #   blocks/_showcase.haml
 #   blocks/_reel-gallery.haml
 # Each entry is a page on the portfolios tab
@@ -28,7 +28,7 @@ portfolios:
 
 ###########################################
 # Array of components:
-#   blocks/_panel.haml
+#   blocks/_board.haml
 #   blocks/_showcase.haml
 #   blocks/_reel-gallery.haml
 # Each entry is a page on the projects tab
@@ -163,7 +163,7 @@ projects:
     - current_page.data.portfolios.each_with_index do |portfolio, index|
         - id = "portfolio-" + index.to_s
         .is-flex.is-flex-direction-column.is-align-items-center.mt-5.mb-6(id=id)
-            = partial "blocks/panel", locals: portfolio
+            = partial "blocks/board", locals: portfolio
             = partial "blocks/reel-gallery", locals: portfolio
             = partial "blocks/showcase", locals: portfolio
 
@@ -174,6 +174,6 @@ projects:
     - current_page.data.projects.each_with_index do |project, index|
         - id = "project-" + index.to_s
         .is-flex.is-flex-direction-column.is-align-items-center.mt-5.mb-6(id=id)
-            = partial "blocks/panel", locals: project
+            = partial "blocks/board", locals: project
             = partial "blocks/reel-gallery", locals: project
             = partial "blocks/showcase", locals: project
