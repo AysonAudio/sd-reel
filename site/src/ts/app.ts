@@ -4,30 +4,39 @@
 
 /** Cache of elems manipulated by app */
 type ElemCache = {
-    /** parts/_tab.haml */
-    tabBtns: NodeListOf<HTMLAnchorElement>;
-
-    /** blocks/_nav.haml */
-    portfolioPageBtns: NodeListOf<HTMLAnchorElement>;
-    /** blocks/_nav.haml */
-    projectPageBtns: NodeListOf<HTMLAnchorElement>;
-
-    /** blocks/_reel-gallery.haml */
-    reelBtns: NodeListOf<HTMLAnchorElement>;
+    ///// ----------------------------------------------------------------
+    ///// SPA elements that are hidden / unhidden when buttons are clicked
+    ///// ----------------------------------------------------------------
 
     /** index.html.haml */
     sections: {
         portfolios: HTMLElement;
         projects: HTMLElement;
     };
-
     /** index.html.haml */
     portfolioPages: NodeListOf<HTMLElement>;
     /** index.html.haml */
     projectPages: NodeListOf<HTMLElement>;
-
     /** blocks/_reel-gallery.haml */
     reelVidBoxes: NodeListOf<HTMLDivElement>;
+
+    ///// ---------------------------------------
+    ///// SPA Buttons that hide / unhide elements
+    ///// ---------------------------------------
+
+    /** parts/_tab.haml */
+    tabBtns: NodeListOf<HTMLAnchorElement>;
+    /** blocks/_nav.haml */
+    portfolioPageBtns: NodeListOf<HTMLAnchorElement>;
+    /** blocks/_nav.haml */
+    projectPageBtns: NodeListOf<HTMLAnchorElement>;
+    /** blocks/_reel-gallery.haml */
+    reelBtns: NodeListOf<HTMLAnchorElement>;
+
+    ///// -----------------------------------------------------------
+    ///// Videos that stop playing when their SPA container is closed
+    ///// -----------------------------------------------------------
+
     /** blocks/_reel-gallery.haml */
     reelVids: NodeListOf<HTMLVideoElement>;
 };
@@ -39,22 +48,19 @@ type ElemCache = {
  */
 export const GetElemCache: () => ElemCache = (() => {
     let cache: ElemCache = {
-        tabBtns: document.querySelectorAll("#tabs > .tabs > ul > li > a"),
-
-        portfolioPageBtns: document.querySelectorAll("[id^='btn-portfolio-']"),
-        projectPageBtns: document.querySelectorAll("[id^='btn-project-']"),
-
-        reelBtns: document.querySelectorAll("[id^='reel-btn-']"),
-
         sections: {
             portfolios: document.querySelector("#portfolios"),
             projects: document.querySelector("#projects"),
         },
-
         portfolioPages: document.querySelectorAll("[id^='portfolio-']"),
         projectPages: document.querySelectorAll("[id^='project-']"),
-
         reelVidBoxes: document.querySelectorAll("[id^='reel-vid-box-']"),
+
+        tabBtns: document.querySelectorAll("#tabs > .tabs > ul > li > a"),
+        portfolioPageBtns: document.querySelectorAll("[id^='btn-portfolio-']"),
+        projectPageBtns: document.querySelectorAll("[id^='btn-project-']"),
+        reelBtns: document.querySelectorAll("[id^='reel-btn-']"),
+
         reelVids: document.querySelectorAll("[id^='reel-vid-box-'] > video"),
     };
     return () => cache;
