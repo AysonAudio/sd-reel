@@ -26,9 +26,9 @@ type ElemCache = {
     /** index.html.haml */
     projectPages: NodeListOf<HTMLElement>;
 
-    /** index.html.haml */
+    /** blocks/_reel-gallery.haml */
     reelVidBoxes: NodeListOf<HTMLDivElement>;
-    /** index.html.haml */
+    /** blocks/_reel-gallery.haml */
     reelVids: NodeListOf<HTMLVideoElement>;
 };
 
