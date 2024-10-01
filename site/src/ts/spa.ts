@@ -17,7 +17,7 @@ type ElemCache = {
     portfolioPages: NodeListOf<HTMLElement>;
     /** index.html.haml */
     projectPages: NodeListOf<HTMLElement>;
-    /** blocks/_reel-gallery.haml */
+    /** sections/_reel-gallery.haml */
     reelVidBoxes: NodeListOf<HTMLDivElement>;
 
     ///// ---------------------------------------
@@ -26,18 +26,18 @@ type ElemCache = {
 
     /** parts/_tab.haml */
     tabBtns: NodeListOf<HTMLAnchorElement>;
-    /** blocks/_nav.haml */
+    /** sections/_nav.haml */
     portfolioPageBtns: NodeListOf<HTMLAnchorElement>;
-    /** blocks/_nav.haml */
+    /** sections/_nav.haml */
     projectPageBtns: NodeListOf<HTMLAnchorElement>;
-    /** blocks/_reel-gallery.haml */
+    /** sections/_reel-gallery.haml */
     reelBtns: NodeListOf<HTMLAnchorElement>;
 
     ///// -----------------------------------------------------------
     ///// Videos that stop playing when their SPA container is closed
     ///// -----------------------------------------------------------
 
-    /** blocks/_reel-gallery.haml */
+    /** sections/_reel-gallery.haml */
     reelVids: NodeListOf<HTMLVideoElement>;
 };
 

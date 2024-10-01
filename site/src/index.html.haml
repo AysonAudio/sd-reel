@@ -17,9 +17,9 @@ tabs:
 
 #############################################
 # Array of components:
-#   blocks/_board.haml
-#   blocks/_showcase.haml
-#   blocks/_reel-gallery.haml
+#   sections/_board.haml
+#   sections/_showcase.haml
+#   sections/_reel-gallery.haml
 # Each entry is a page on the portfolios tab
 #############################################
 
@@ -28,9 +28,9 @@ portfolios:
 
 ###########################################
 # Array of components:
-#   blocks/_board.haml
-#   blocks/_showcase.haml
-#   blocks/_reel-gallery.haml
+#   sections/_board.haml
+#   sections/_showcase.haml
+#   sections/_reel-gallery.haml
 # Each entry is a page on the projects tab
 ###########################################
 
@@ -158,22 +158,22 @@ projects:
 
 %section.px-5#portfolios.is-hidden
     - portfolio_icon = current_page.data.tabs.portfolios.icon
-    = partial "blocks/nav", locals: {pages:3, type:"portfolio", icon:portfolio_icon}
+    = partial "sections/nav", locals: {pages:3, type:"portfolio", icon:portfolio_icon}
 
     - current_page.data.portfolios.each_with_index do |portfolio, index|
         - id = "portfolio-" + index.to_s
         .is-flex.is-flex-direction-column.is-align-items-center.mt-5.mb-6(id=id)
-            = partial "blocks/board", locals: portfolio
-            = partial "blocks/reel-gallery", locals: portfolio
-            = partial "blocks/showcase", locals: portfolio
+            = partial "sections/board", locals: portfolio
+            = partial "sections/reel-gallery", locals: portfolio
+            = partial "sections/showcase", locals: portfolio
 
 %section.px-5#projects
     - projects_icon = current_page.data.tabs.projects.icon
-    = partial "blocks/nav", locals: {pages:3, type:"project", icon:projects_icon}
+    = partial "sections/nav", locals: {pages:3, type:"project", icon:projects_icon}
 
     - current_page.data.projects.each_with_index do |project, index|
         - id = "project-" + index.to_s
         .is-flex.is-flex-direction-column.is-align-items-center.mt-5.mb-6(id=id)
-            = partial "blocks/board", locals: project
-            = partial "blocks/reel-gallery", locals: project
-            = partial "blocks/showcase", locals: project
+            = partial "sections/board", locals: project
+            = partial "sections/reel-gallery", locals: project
+            = partial "sections/showcase", locals: project
