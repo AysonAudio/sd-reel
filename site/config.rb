@@ -4,7 +4,7 @@
 set :source, 'src'
 set :fonts_dir, 'fonts'
 set :images_dir, 'assets'
-set :layouts_dir, 'page'
+set :layouts_dir, 'layouts'
 set :css_dir, 'scss'
 set :js_dir, 'artifacts'
 set :index_file, 'index.html'
