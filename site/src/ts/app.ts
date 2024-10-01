@@ -76,7 +76,7 @@ export const GetElemCache: () => ElemCache = (() => {
  *   Set active tab button
  *   Pause all reel videos
  */
-function initTabBtn(tabBtn: HTMLAnchorElement) {
+export const initTabBtn = (tabBtn: HTMLAnchorElement) => {
     let cache = GetElemCache();
 
     // Get tag of section to unhide. Extracts it from tab button class
@@ -96,7 +96,7 @@ function initTabBtn(tabBtn: HTMLAnchorElement) {
         // Pause all reel videos
         for (const elem of cache.reelVids) elem.pause();
     });
-}
+};
 
 /**
  * Make a page button:
@@ -104,7 +104,7 @@ function initTabBtn(tabBtn: HTMLAnchorElement) {
  *   Set active page button
  *   Pause all reel videos
  */
-function initPageBtn(pageBtn: HTMLAnchorElement) {
+export const initPageBtn = (pageBtn: HTMLAnchorElement) => {
     let cache = GetElemCache();
 
     // Get id of page to unhide. Extracts it from page button id
@@ -139,7 +139,7 @@ function initPageBtn(pageBtn: HTMLAnchorElement) {
         // Pause all reel videos
         for (const elem of cache.reelVids) elem.pause();
     });
-}
+};
 
 /**
  * Make a reel gallery menu button:
@@ -147,7 +147,7 @@ function initPageBtn(pageBtn: HTMLAnchorElement) {
  *   Set active menu button
  *   Pause all reel videos
  */
-function initReelBtn(reelBtn: HTMLAnchorElement) {
+export const initReelBtn = (reelBtn: HTMLAnchorElement) => {
     let cache = GetElemCache();
 
     // Get id of video to unhide. Extracts uuid substring from reel button id.
@@ -168,24 +168,4 @@ function initReelBtn(reelBtn: HTMLAnchorElement) {
         // Pause all reel videos
         for (const elem of cache.reelVids) elem.pause();
     });
-}
-
-// ##################################################################### //
-// ################################ MAIN ############################### //
-// ##################################################################### //
-
-document.addEventListener("DOMContentLoaded", () => {
-    let cache = GetElemCache();
-
-    // Init buttons
-    for (const tabBtn of cache.tabBtns) initTabBtn(tabBtn);
-
-    for (const pageBtn of cache.portfolioPageBtns) initPageBtn(pageBtn);
-    for (const pageBtn of cache.projectPageBtns) initPageBtn(pageBtn);
-
-    for (const reelBtn of cache.reelBtns) initReelBtn(reelBtn);
-
-    // In each tab section, default to first page
-    cache.portfolioPageBtns[0]?.click();
-    cache.projectPageBtns[0]?.click();
-});
+};
