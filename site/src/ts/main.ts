@@ -1,18 +1,18 @@
-import * as App from "./app.js";
+import * as Spa from "./spa.js";
 
 // ##################################################################### //
 // ################## ADD FUNCTIONALITY TO SPA BUTTONS ################# //
 // ##################################################################### //
 document.addEventListener("DOMContentLoaded", () => {
-    let cache = App.GetElemCache();
+    let cache = Spa.GetElemCache();
 
     // Init buttons
-    for (const tabBtn of cache.tabBtns) App.initTabBtn(tabBtn);
+    for (const tabBtn of cache.tabBtns) Spa.initTabBtn(tabBtn);
 
-    for (const pageBtn of cache.portfolioPageBtns) App.initPageBtn(pageBtn);
-    for (const pageBtn of cache.projectPageBtns) App.initPageBtn(pageBtn);
+    for (const pageBtn of cache.portfolioPageBtns) Spa.initPageBtn(pageBtn);
+    for (const pageBtn of cache.projectPageBtns) Spa.initPageBtn(pageBtn);
 
-    for (const reelBtn of cache.reelBtns) App.initReelBtn(reelBtn);
+    for (const reelBtn of cache.reelBtns) Spa.initReelBtn(reelBtn);
 
     // In each tab section, default to first page
     cache.portfolioPageBtns[0]?.click();
