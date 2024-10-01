@@ -3,23 +3,23 @@
 
 set :source, 'src'
 set :fonts_dir, 'fonts'
-set :images_dir, 'img'
-set :layouts_dir, 'page'
+set :images_dir, 'assets'
+set :layouts_dir, 'layouts'
 set :css_dir, 'scss'
-set :js_dir, '.js'
+set :js_dir, 'artifacts'
 set :index_file, 'index.html'
 
 # Configure environments
 # https://middlemanapp.com/advanced/configuration/#environment-specific-settings
 
 configure :development do
-  activate :livereload
+  activate :livereload, ignore: ['ts/*']
 end
 
 configure :build do
   ignore 'ts/*'
   activate :minify_css
-  activate :minify_html
+  activate :minify_html, preserve_line_breaks: true
   activate :minify_javascript, compressor: Terser.new
   activate :asset_hash
 end

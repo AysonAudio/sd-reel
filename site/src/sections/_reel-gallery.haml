@@ -1,0 +1,55 @@
+-# local parameter: YAML Object
+-#
+-#     reels?: Array of YAML Objects
+-#     A list of reel articles accessed by a side menu
+-#
+-#         uuid: string
+-#         A globally unique name used by JavaScript buttons
+-#
+-#         mp4: string
+-#         URI to a .mp4 video file
+-#
+-#         label?: string
+-#         Menu button text
+-#
+-#         header?: string
+-#         Primary description text
+-#
+-#         body?: string
+-#         Secondary description text
+
+- if defined?(reels)
+    %section.hero.is-primary.my-6
+        .hero-body.columns.is-desktop
+            .column.is-narrow
+                .box
+                    %aside.menu.mr-6
+                        %p.menu-label.is-unselectable Project Highlights
+                        %ul.menu-list
+                            - reels.each_with_index do |reel, index|
+                                - id = "reel-btn-" + reel.uuid
+                                - class0 = index > 0 ? "" : "is-active"
+                                %li.is-unselectable
+                                    %a(id=id class=class0)
+                                        %span.icon-text.is-inline-block.has-text-nowrap
+                                            %span.icon
+                                                %i.fas.fa-circle-play
+                                            %span= reel.label || ""
+            .column
+                - reels.each_with_index do |reel, index|
+                    - id = "reel-vid-box-" + reel.uuid
+                    - class0 = index > 0 ? "is-hidden" : ""
+                    .box(id=id class=class0)
+                        - if defined?(reel.header)
+                            %article.message.mb-0
+                                .message-header
+                                    %span.icon-text
+                                        %span.icon
+                                            %i.fas.fa-film.fa-sm
+                                        %span= reel.header
+                        %video.my-0(controls preload="auto")
+                            %source{src:reel.mp4, type:"video/mp4"}/
+                        - if defined?(reel.body)
+                            %article.message.mt-0
+                                .message-body.keep-line-breaks
+                                    = reel.body

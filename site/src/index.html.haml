@@ -1,0 +1,179 @@
+---
+
+##########################################
+# Array of components: parts/_tab.haml
+# Each entry is a tab button
+# Data is also referenced by page buttons
+##########################################
+
+tabs:
+    portfolios:
+        icon: fas fa-file-audio
+        label: Portfolio
+    projects:
+        icon: fas fa-clipboard-check
+        label: Projects
+        starts_active: true
+
+#############################################
+# Array of components:
+#   sections/_board.haml
+#   sections/_showcase.haml
+#   sections/_reel-gallery.haml
+# Each entry is a page on the portfolios tab
+#############################################
+
+portfolios:
+    - {vid: "https://www.youtube.com/embed/npPnXA_-04U"}
+
+###########################################
+# Array of components:
+#   sections/_board.haml
+#   sections/_showcase.haml
+#   sections/_reel-gallery.haml
+# Each entry is a page on the projects tab
+###########################################
+
+projects:
+    -
+        splash: {src: assets/proj-1/splash.jpg}
+        icon: fas fa-2x fa-film
+        title: Cartoony Short Film
+        subtitle: |
+            sound design by chris ayson
+            music by pierce cram
+        links:
+            -
+                href: https://www.digipen.edu/showcase/student-animations/prepawsterous
+                label: Film Details
+        reels:
+            -
+                uuid: proj-1-logo
+                mp4: assets/proj-1/logo.mp4
+                label: Logo Sound Design
+                header: Logo Sound Design
+                body: |
+                    A stinger for the logo intro.
+                    
+                    I created it using:
+                    - An orchestral snare roll VST.
+                    - An orchestral cymbal crash VST.
+                    - Some sound effects libraries.
+            -
+                uuid: proj-1-amb
+                mp4: assets/proj-1/amb.mp4
+                label: Ambience Sound Design
+                header: Ambience Sound Design
+                body: |
+                    A snippet of the very soft ambience I designed to complement the music.
+
+                    I designed it so that:
+                    - The ambience changes every time the film cuts to a new shot.
+                    - Far-away camera shots sound sparser and less active.
+                    - Close-up camera shots sound fuller and more active.
+        bigcell:
+            icon: fas fa-2x fa-award
+            title: Winner, Best Sound
+            subtitle: 2021 KINO Short Film Festival
+        cells:
+            -
+                icon: fas fa-2x fa-award
+                title: Winner, Best PNW Student Film
+                subtitle: 2021 KINO Short Film Festival
+            -
+                icon: fas fa-2x fa-award
+                title: Winner, Best Student Animation
+                subtitle: 2021 PRIX ROYAL Paris Animation Awards
+            -
+                icon: fas fa-2x fa-award
+                title: Winner, Best Dramatic Sequence
+                subtitle: 2021 PRIX ROYAL Paris Animation Awards
+            -
+                icon: fas fa-2x fa-award
+                title: Winner, Best Children Comedy
+                subtitle: 2020 International Student Animated Film Animafantasia Festival
+            -
+                icon: fas fa-2x fa-award
+                title: Semi-Finalist, Best Animated Film
+                subtitle: 2022 Children Cinema Awards
+            -
+                icon: fas fa-2x fa-award
+                title: Semi-Finalist, Best Student Animation
+                subtitle: '2022 Drawtastic "Golden Pencil Awards"'
+            -
+                icon: fas fa-2x fa-award
+                title: Finalist (Highly Commended), Film of the Year, 2D Animation
+                subtitle: 2021 The Rookie Awards
+            -
+                icon: fas fa-2x fa-award
+                title: Finalist, Golden Student Category
+                subtitle: 2021 Golden Short Film Festival
+            -
+                icon: fas fa-2x fa-award
+                title: Finalist, Best Character-Based Short
+                subtitle: 2020 Los Angeles Animation Festival
+            -
+                icon: fas fa-2x fa-award
+                title: Finalist, Best Animated Short Film
+                subtitle: 2020 The Short Film Awards
+            -
+                icon: fas fa-2x fa-award
+                title: Finalist, Best Animated Film
+                subtitle: 2020 Oregon Short Film Festival
+            -
+                icon: fas fa-2x fa-award
+                title: Finalist, Best Washington Film
+                subtitle: 2020 Oregon Short Film Festival
+            -
+                icon: fas fa-2x fa-award
+                title: Semi-Finalist, Best Student Animation Film
+                subtitle: 2020 Student Los Angeles Film Awards
+            
+---
+
+
+-################-
+-# HERO SECTION #-
+-################-
+%section.hero.is-primary
+    %div(class="hero-body is-flex is-flex-direction-column |
+    is-align-items-center has-text-centered") |
+        %figure.image.is-128x128.is-inline-block
+            %img.is-square(src="assets/logo-big.svg" alt="Logo")/
+        %h1.title.is-1 Ayson Audio
+
+-#################-
+-# PORTFOLIO SPA #-
+-#################-
+%section#tabs
+    .tabs.is-centered
+        %ul
+            - current_page.data.tabs.each do |k,v|
+                = partial "parts/tab", locals: { |
+                    a_class: k, |
+                    icon: v.icon, |
+                    label: v.label, |
+                    starts_active: v.starts_active |
+                } |
+
+%section.px-5#portfolios.is-hidden
+    - portfolio_icon = current_page.data.tabs.portfolios.icon
+    = partial "sections/nav", locals: {pages:3, type:"portfolio", icon:portfolio_icon}
+
+    - current_page.data.portfolios.each_with_index do |portfolio, index|
+        - id = "portfolio-" + index.to_s
+        .is-flex.is-flex-direction-column.is-align-items-center.mt-5.mb-6(id=id)
+            = partial "sections/board", locals: portfolio
+            = partial "sections/reel-gallery", locals: portfolio
+            = partial "sections/showcase", locals: portfolio
+
+%section.px-5#projects
+    - projects_icon = current_page.data.tabs.projects.icon
+    = partial "sections/nav", locals: {pages:3, type:"project", icon:projects_icon}
+
+    - current_page.data.projects.each_with_index do |project, index|
+        - id = "project-" + index.to_s
+        .is-flex.is-flex-direction-column.is-align-items-center.mt-5.mb-6(id=id)
+            = partial "sections/board", locals: project
+            = partial "sections/reel-gallery", locals: project
+            = partial "sections/showcase", locals: project

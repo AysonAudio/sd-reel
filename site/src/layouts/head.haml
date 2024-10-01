@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+%html(lang="en")
+    %head
+        %meta(charset="UTF-8")/
+        %meta(name="viewport" content="width=device-width, initial-scale=1.0")/
+        %title= current_page.data.title || "Ayson Audio"
+
+        = stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+        = stylesheet_link_tag "styles/index.css"
+        = stylesheet_link_tag "styles/parts.css"
+        = stylesheet_link_tag "styles/style.css"
+
+        %script(src="https://kit.fontawesome.com/af17f19b3b.js" crossorigin="anonymous")
+        %script(src="artifacts/main.js" type="module")
+    %body
+        = yield

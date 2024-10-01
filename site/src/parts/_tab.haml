@@ -1,0 +1,19 @@
+-# local parameter: YAML Object
+-#
+-#     a_class: string
+-#     Anchor class. Used as a tag by JavaScript
+-#
+-#     icon: string
+-#     CSS classes from Font Awesome
+-#
+-#     label: string
+-#     Button text
+-#
+-#     starts_active?: boolean
+-#     If true, the page will start out with this button being active
+
+%li{class: starts_active ? "is-active" : ""}
+    %a(class=a_class)
+        %span.icon
+            %i(class=icon)
+        %span= label

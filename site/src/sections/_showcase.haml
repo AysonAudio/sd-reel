@@ -1,0 +1,81 @@
+-# local parameter: YAML Object
+-#
+-#     bigcell?: YAML Object
+-#     A large horizontally-centered rectangle with images and text descriptions
+-#
+-#         emblem?: YAML Object
+-#         A small image shown next to the text description
+-#
+-#             src: string
+-#             URI to an image file
+-#
+-#             alt?: string
+-#             Alt text if image fails
+-#
+-#         icon?: string
+-#         CSS classes from Font Awesome
+-#
+-#         title?: string
+-#         Primary text description
+-#
+-#         subtitle?: string
+-#         Secondary text description
+-#
+-#     cells?: Array of YAML Objects
+-#     A grid of smaller rectangles with images and text descriptions
+-#
+-#         emblem?: YAML Object
+-#         A small image shown next to the text description
+-#
+-#             src: string
+-#             URI to an image file
+-#
+-#             alt?: string
+-#             Alt text if image fails
+-#
+-#         icon?: string
+-#         CSS classes from Font Awesome
+-#
+-#         title?: string
+-#         Primary text description
+-#
+-#         subtitle?: string
+-#         Secondary text description
+
+- if defined?(bigcell)
+    .media.notification.is-info.my-6
+        .media-left
+            - if defined?(bigcell.emblem)
+                %figure.image.is-64x64
+                    %img{
+                        src:bigcell.emblem.src,
+                        alt:bigcell.emblem.alt||""}/
+            - if defined?(bigcell.icon)
+                %span.icon.is-large
+                    %i{class:bigcell.icon}
+        .media-content.is-clipped
+            - if defined?(bigcell.title)
+                %p.title.is-4= bigcell.title
+            - if defined?(bigcell.subtitle)
+                %p.subtitle.is-4= bigcell.subtitle
+
+- if defined?(cells)
+    .container.is-fullhd
+        .grid.is-col-min-12
+            - for cell in cells
+                .cell.p-5
+                    .media
+                        .media-left
+                            - if defined?(cell.emblem)
+                                %figure.image.is-64x64
+                                    %img{
+                                        src:cell.emblem.src,
+                                        alt:cell.emblem.alt||""}/
+                            - if defined?(cell.icon)
+                                %span.icon.is-large
+                                    %i{class:cell.icon}
+                        .media-content
+                            - if defined?(cell.title)
+                                %p.title.is-6= cell.title
+                            - if defined?(cell.subtitle)
+                                %p.subtitle.is-6= cell.subtitle
