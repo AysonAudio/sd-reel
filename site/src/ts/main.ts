@@ -1,7 +1,7 @@
 import * as Spa from "./spa.js";
 
 // ##################################################################### //
-// ################## ADD FUNCTIONALITY TO SPA BUTTONS ################# //
+// ########################## INIT SPA BUTTONS ######################### //
 // ##################################################################### //
 document.addEventListener("DOMContentLoaded", () => {
     let cache = Spa.GetElemCache();
