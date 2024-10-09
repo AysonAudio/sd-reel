@@ -158,7 +158,7 @@ projects:
 
 %section.px-5#portfolios.is-hidden
     - portfolio_icon = current_page.data.tabs.portfolios.icon
-    = partial "sections/nav", locals: {pages:3, type:"portfolio", icon:portfolio_icon}
+    = partial "parts/nav", locals: {pages:3, type:"portfolio", icon:portfolio_icon}
 
     - current_page.data.portfolios.each_with_index do |portfolio, index|
         - id = "portfolio-" + index.to_s
@@ -169,7 +169,7 @@ projects:
 
 %section.px-5#projects
     - projects_icon = current_page.data.tabs.projects.icon
-    = partial "sections/nav", locals: {pages:3, type:"project", icon:projects_icon}
+    = partial "parts/nav", locals: {pages:3, type:"project", icon:projects_icon}
 
     - current_page.data.projects.each_with_index do |project, index|
         - id = "project-" + index.to_s
