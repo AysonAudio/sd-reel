@@ -2,7 +2,7 @@
 // ############################ HELPER FUNCS ########################### //
 // ##################################################################### //
 
-/** Cache of elems manipulated by app */
+/** Cache of elems manipulated by SPA */
 type ElemCache = {
     ///// ----------------------------------------------------------------
     ///// SPA elements that are hidden / unhidden when buttons are clicked
@@ -42,9 +42,8 @@ type ElemCache = {
 };
 
 /**
- * A decorated function.
- * One global {@link ElemCache} object is initialized in the decorator.
- * Calling the resulting function returns the same immutable object every time.
+ * Returns a cache of elems manipulated by SPA.
+ * Created in an anonymous factory function.
  */
 export const GetElemCache: () => ElemCache = (() => {
     let cache: ElemCache = {
