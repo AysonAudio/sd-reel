@@ -44,7 +44,7 @@ type ElemCache = {
 /**
  * A decorated function.
  * One global {@link ElemCache} object is initialized in the decorator.
- * Calling the resulting function returns the same object every time.
+ * Calling the resulting function returns the same immutable object every time.
  */
 export const GetElemCache: () => ElemCache = (() => {
     let cache: ElemCache = {
@@ -63,6 +63,11 @@ export const GetElemCache: () => ElemCache = (() => {
 
         reelVids: document.querySelectorAll("[id^='reel-vid-box-'] > video"),
     };
+
+    // Make cache immutable
+    Object.freeze(cache);
+
+    // Return function that returns cache
     return () => cache;
 })();
 
