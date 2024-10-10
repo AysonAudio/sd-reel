@@ -29,7 +29,7 @@ export const initTabBtns = () => {
             projects: document.querySelector("#projects") as HTMLElement,
         };
         const tabBtns: NodeListOf<HTMLAnchorElement> =
-            document.querySelectorAll("#tabs > .tabs > ul > li > a");
+            document.querySelectorAll("#tabs a");
         const reelVids: NodeListOf<HTMLVideoElement> =
             document.querySelectorAll("[id^='reel-vid-box-'] > video");
 
