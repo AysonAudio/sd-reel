@@ -44,6 +44,8 @@ export const initTabBtn = (tabBtn: HTMLAnchorElement) => {
     });
 };
 
+// -------------------------------------------------------------------------- //
+
 /**
  * Make a page button:
  *   Hide / unhide content subsections
@@ -107,6 +109,8 @@ export const initPageBtn = (pageBtn: HTMLAnchorElement) => {
         for (const elem of reelVids) elem.pause();
     });
 };
+
+// -------------------------------------------------------------------------- //
 
 /**
  * Make a reel gallery menu button:
