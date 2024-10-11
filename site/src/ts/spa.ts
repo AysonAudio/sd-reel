@@ -69,17 +69,13 @@ export const initPageBtns = () => {
     runAfterLoadDOM(() => {
         //// GET ELEMENTS ////
         const pages: { [index: string]: NodeListOf<HTMLElement> } = {
-            portfolioPages: document.querySelectorAll("[id^='portfolio-']"),
-            projectPages: document.querySelectorAll("[id^='project-']"),
+            portfolio: document.querySelectorAll("[id^='portfolio-']"),
+            project: document.querySelectorAll("[id^='project-']"),
         };
-
         const pageBtns: { [index: string]: NodeListOf<HTMLAnchorElement> } = {
-            portfolioPageBtns: document.querySelectorAll(
-                "[id^='btn-portfolio-']"
-            ),
-            projectPageBtns: document.querySelectorAll("[id^='btn-project-']"),
+            portfolio: document.querySelectorAll("[id^='btn-portfolio-']"),
+            project: document.querySelectorAll("[id^='btn-project-']"),
         };
-
         const reelVids: NodeListOf<HTMLVideoElement> =
             document.querySelectorAll("[id^='reel-vid-box-'] > video");
 
@@ -89,12 +85,10 @@ export const initPageBtns = () => {
             const pageId = pageBtn.id.slice("btn-".length);
             const pageType = pageId.slice(0, pageId.indexOf("-"));
             const pageNum = pageId.slice(pageId.indexOf("-") + 1);
-            const pageBtnList = pageType + "PageBtns";
-            const pageList = pageType + "Pages";
 
             pageBtn.addEventListener("click", () => {
                 // Use CSS classes to hide / unhide pages
-                for (const elem of pages[pageList] as NodeListOf<HTMLElement>) {
+                for (const elem of pages[pageType] as NodeListOf<HTMLElement>) {
                     if (elem.id === pageId)
                         for (const child of elem.children)
                             child.classList.remove("is-hidden");
@@ -103,7 +97,7 @@ export const initPageBtns = () => {
                             child.classList.add("is-hidden");
                 }
                 // Update screen reader metadata
-                for (const _pageBtn of pageBtns[pageBtnList]) {
+                for (const _pageBtn of pageBtns[pageType]) {
                     _pageBtn.classList.remove("is-current");
                     _pageBtn.removeAttribute("aria-current");
                     _pageBtn.setAttribute(
