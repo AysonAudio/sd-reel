@@ -133,7 +133,7 @@ export const initPageBtns = () => {
  */
 export const initReelBtns = () => {
     runAfterLoadDOM(() => {
-        // Get elements
+        //// GET ELEMENTS ////
         const reelBtns: NodeListOf<HTMLAnchorElement> =
             document.querySelectorAll("[id^='reel-btn-']");
         const reelVidBoxes: NodeListOf<HTMLDivElement> =
@@ -141,6 +141,7 @@ export const initReelBtns = () => {
         const reelVids: NodeListOf<HTMLVideoElement> =
             document.querySelectorAll("[id^='reel-vid-box-'] > video");
 
+        //// INIT ALL REEL BUTTONS ////
         for (const reelBtn of reelBtns) {
             // Get id of video to unhide. Extracts uuid substring from reel button id.
             const uuid = reelBtn.id.slice("reel-btn-".length);
