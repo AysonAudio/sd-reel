@@ -24,9 +24,9 @@ const runAfterLoadDOM = (func: () => void) => {
 export const initTabBtns = () => {
     runAfterLoadDOM(() => {
         //// GET ELEMENTS ////
-        const sections = {
-            portfolios: document.querySelector("#portfolios") as HTMLElement,
-            projects: document.querySelector("#projects") as HTMLElement,
+        const sections: { [index: string]: HTMLElement } = {
+            portfolios: document.querySelector("#portfolios"),
+            projects: document.querySelector("#projects"),
         };
         const tabBtns: NodeListOf<HTMLAnchorElement> =
             document.querySelectorAll("#tabs a");
@@ -68,22 +68,16 @@ export const initTabBtns = () => {
 export const initPageBtns = () => {
     runAfterLoadDOM(() => {
         //// GET ELEMENTS ////
-        const pages = {
-            portfolioPages: document.querySelectorAll(
-                "[id^='portfolio-']"
-            ) as NodeListOf<HTMLElement>,
-            projectPages: document.querySelectorAll(
-                "[id^='project-']"
-            ) as NodeListOf<HTMLElement>,
+        const pages: { [index: string]: NodeListOf<HTMLElement> } = {
+            portfolioPages: document.querySelectorAll("[id^='portfolio-']"),
+            projectPages: document.querySelectorAll("[id^='project-']"),
         };
 
-        const pageBtns = {
+        const pageBtns: { [index: string]: NodeListOf<HTMLAnchorElement> } = {
             portfolioPageBtns: document.querySelectorAll(
                 "[id^='btn-portfolio-']"
-            ) as NodeListOf<HTMLAnchorElement>,
-            projectPageBtns: document.querySelectorAll(
-                "[id^='btn-project-']"
-            ) as NodeListOf<HTMLAnchorElement>,
+            ),
+            projectPageBtns: document.querySelectorAll("[id^='btn-project-']"),
         };
 
         const reelVids: NodeListOf<HTMLVideoElement> =
