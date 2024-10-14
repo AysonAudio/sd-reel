@@ -1,4 +1,17 @@
 {
+    "private": true,
+    "name": "ayson-audio-sd-reel",
+    "version": "0.2.0",
+    "description": "Ayson Audio portfolio website",
+    "keywords": [],
+    "author": "Ayson Audio <contact@aysonaudio.dev> (https://aysonaudio.dev)",
+    "license": "MIT",
+    "homepage": "https://github.com/AysonAudio/sd-reel",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AysonAudio/sd-reel.git"
+    },
+    "scripts": {},
     "devDependencies": {
         "typescript": "^5.4.3"
     }
