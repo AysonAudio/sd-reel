@@ -2,6 +2,7 @@
     "include": ["src/ts/**/*"],
     "compilerOptions": {
         "declaration": false,
+        "noImplicitAny": true,
         "module": "ESNext",
         "target": "ESNext",
         "outDir": "src/artifacts"
