@@ -11,8 +11,15 @@
         "type": "git",
         "url": "git+https://github.com/AysonAudio/sd-reel.git"
     },
-    "scripts": {},
+    "scripts": {
+        "start": "webpack --watch --progress --color --config webpack.dev.js",
+        "build": "webpack --bail --config webpack.prod.js"
+    },
     "devDependencies": {
-        "typescript": "^5.4.3"
+        "ts-loader": "^9.5.1",
+        "typescript": "^5.4.3",
+        "webpack": "^5.95.0",
+        "webpack-cli": "^5.1.4",
+        "webpack-merge": "^6.0.1"
     }
 }

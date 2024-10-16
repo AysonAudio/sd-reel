@@ -1,4 +1,4 @@
-import * as Spa from "./spa.js";
+import * as Spa from "./ts/spa";
 
 Spa.initTabBtns();
 Spa.initReelBtns();
