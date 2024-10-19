@@ -20,7 +20,8 @@
 -#             Alt text if image fails
 -#
 -#         icon?: string
--#         CSS classes from Font Awesome
+-#         Instead of an emblem, an icon from Font Awesome can be used
+-#         This string is the CSS classes from Font Awesome
 -#
 -#         title?: string
 -#         Primary text description
@@ -41,7 +42,8 @@
 -#             Alt text if image fails
 -#
 -#         icon?: string
--#         CSS classes from Font Awesome
+-#         Instead of an emblem, an icon from Font Awesome can be used
+-#         This string is the CSS classes from Font Awesome
 -#
 -#         title?: string
 -#         Primary text description
@@ -57,7 +59,7 @@
                     %img{
                         src:bigcell.emblem.src,
                         alt:bigcell.emblem.alt||""}/
-            - if defined?(bigcell.icon)
+            - elsif defined?(bigcell.icon)
                 %span.icon.is-large
                     %i{class:bigcell.icon}
         .media-content.is-clipped
@@ -78,7 +80,7 @@
                                     %img{
                                         src:cell.emblem.src,
                                         alt:cell.emblem.alt||""}/
-                            - if defined?(cell.icon)
+                            - elsif defined?(cell.icon)
                                 %span.icon.is-large
                                     %i{class:cell.icon}
                         .media-content
